@@ -1,38 +1,163 @@
-.App {
-  text-align: center;
+.login-div {
+  margin-left: 35%;
+  margin-top: 5%;
+  width: 30%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.login-text-email {
+  margin-bottom: 3%;
+}
+.login-text-pass {
+  margin-bottom: 3%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.login-button {
+  background-color: #04aa6d;
   color: white;
+  padding: 14px 20px;
+  border: none;
+  cursor: pointer;
+  margin-left: 35%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 25%;
 }
 
-.App-link {
-  color: #61dafb;
+.login-div > .login-button:hover {
+  color: black;
+  transform: scale(1.1);
+  transition: all 0.5s;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.patient {
+  margin-top: 2%;
+  margin-left: 15%;
+  display: flex;
+  border: 2px solid green;
+  padding: 0.5%;
+  padding-left: 2%;
+  cursor: pointer;
+}
+
+.patient-check {
+  margin-top: 2%;
+  margin-left: 15%;
+  display: flex;
+  border: 2px solid green;
+  padding: 0.5%;
+  padding-left: 2%;
+}
+
+.patient-check > .patient-check-button {
+  margin-right: 2%;
+  background-color: #04aa6d;
+  color: white;
+  border: none;
+  cursor: pointer;
+  width: 25%;
+  margin-left: auto;
+  margin-top: 4%;
+  margin-bottom: 4%;
+}
+
+.patient-check > .patient-check-button:hover {
+  color: black;
+  transform: scale(1.1);
+  transition: all 0.5s;
+}
+
+.patient:hover {
+  transform: scale(1.02);
+  transition: all 0.5s;
+}
+
+.patient > .patient-id {
+  margin-left: auto;
+  margin-right: 1%;
+}
+
+.patient-name {
+  margin: 0%;
+  padding: 0%;
+}
+
+.delete {
+  margin: 0;
+  background-color: #f44336;
+  border: none;
+  color: beige;
+}
+
+.delete:hover {
+  transform: scale(1.1);
+  transition: all 0.5s;
+}
+
+img {
+  height: 300px;
+  width: 300px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  margin-bottom: 4%;
+}
+
+.search-bar {
+  margin-left: 25%;
+}
+
+.main-patient-div {
+  padding-left: 0%;
+  margin-left: 0%;
+}
+
+
+@media all and (max-width: 1625px) {
+  .patient {
+    width: 60%;
+    margin-top: 2%;
+    margin-left: 33%;
+    display: flex;
+    border: 2px solid green;
+    padding: 0.5%;
+    padding-left: 2%;
+    cursor: pointer;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media all and (max-width: 1400px) and (min-width: 1000px) {
+  img {
+    margin-top: 0%;
+    padding-top: 0%;
+    height: 300px;
+    width: 300px;
+    margin-left: 6%;
+    margin-bottom: 5%;
+  }
+}
+
+@media all and (max-width: 1000px) {
+  .search-bar {
+    margin-left: 30%;
+  }
+  .login-div {
+    margin-left: 20%;
+    margin-top: 5%;
+    width: 70%;
+  }
+  img {
+    height: 280px;
+    width: 280px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
+  .main-patient-div {
+    padding-left: 0%;
+    margin-left: 0%;
   }
 }
