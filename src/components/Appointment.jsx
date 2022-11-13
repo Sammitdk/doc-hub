@@ -41,7 +41,7 @@ const Appointment = () => {
           type="text"
           placeholder="Search Patient"
           required
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) => setSearch(e.target.value.toLocaleLowerCase())}
         />
       </div>
 

@@ -3,6 +3,7 @@ import { collection, query, onSnapshot } from "firebase/firestore";
 import { db } from "../Firebase";
 import Patient from "./Patient";
 import { isEmpty } from "@firebase/util";
+import MaskImg from "../assets/images/maskman.gif";
 
 const Check = () => {
   const [searchList, setSearchList] = useState([]);
@@ -37,10 +38,41 @@ const Check = () => {
     });
     // eslint-disable-next-line
   }, []);
+
+  const appointment = window.matchMedia("(max-width: 600px)").matches;
+  const noAppointments = {
+    a: {
+      textAlign: "end",
+    },
+    b: {
+      textAlign: "center",
+    },
+    c: {
+      position: "absolute",
+      right: 0,
+      top: 100,
+    },
+    d: {
+      height: "350px",
+      widht: "400px",
+      top: 90,
+      right: 50,
+    },
+  };
+
   return (
     <div>
       {isEmpty(searchList) && (
-        <h2 style={{ textAlign: 'center' }}>No Appointments</h2>
+        <div>
+          <h2 style={appointment ? noAppointments.a : noAppointments.b}>
+            No Appointments
+          </h2>
+          <img
+            src={MaskImg}
+            style={appointment ? noAppointments.c : noAppointments.d}
+            alt=""
+          ></img>
+        </div>
       )}
       {searchList?.map((item) => {
         return (
