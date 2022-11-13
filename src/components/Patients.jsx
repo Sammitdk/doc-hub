@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { db, UseFirebaseValue } from "../Firebase";
 import Patient from "./Patient";
 
-const Footer = () => {
+const Patients = () => {
   const [{ patients }, dispatch] = UseFirebaseValue([]);
 
   useEffect(() => {
@@ -29,10 +29,9 @@ const Footer = () => {
     // eslint-disable-next-line
   }, []);
 
- 
   return patients?.map((patient) => {
     return <Patient patient={patient} key={patient.id} />;
   });
 };
 
-export default Footer;
+export default Patients;

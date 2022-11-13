@@ -5,7 +5,7 @@ import Main from "./components/Main";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import RegisterPatient from "./components/RegisterPatient";
 import SideBar from "./components/SideBar";
-import Footer from "./components/Footer";
+import Patients from "./components/Patients";
 import Appointment from "./components/Appointment";
 import PatientDetails from "./components/PatientDetails";
 import CheckList from "./components/CheckList";
@@ -14,7 +14,7 @@ import CheckPatient from "./components/CheckPatient";
 const App = () => {
   const [{ user }] = UseFirebaseValue();
   return (
-    <>
+    <div>
       {!user ? (
         <Login />
       ) : (
@@ -23,7 +23,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Main />} />
             <Route exact path="/register" element={<RegisterPatient />} />
-            <Route path="/patients" element={<Footer />} />
+            <Route path="/patients" element={<Patients />} />
             <Route path="/appointment" element={<Appointment />} />
             <Route path="/:id" element={<PatientDetails />} />
             <Route path="/check" element={<CheckList />} />
@@ -31,7 +31,7 @@ const App = () => {
           </Routes>
         </BrowserRouter>
       )}
-    </>
+    </div>
   );
 };
 
