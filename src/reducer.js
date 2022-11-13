@@ -3,6 +3,7 @@ export const initialState = {
   error: null,
   patients: null,
   searchList: null,
+  incorrectIdPass: null,
 };
 
 const reducer = (state, action) => {
@@ -26,6 +27,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         searchList: action.searchList,
+      };
+    case "WrongIdPass":
+      return {
+        ...state,
+        incorrectIdPass: action.incorrectIdPass,
       };
     default:
       return state;

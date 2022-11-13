@@ -1,7 +1,6 @@
 import React from "react";
 import "../App.css";
-import { useState } from "react";
-import Textarea from "@mui/joy/Textarea";
+import { useState, useEffect } from "react";
 import { auth, UseFirebaseValue } from "../Firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
@@ -10,7 +9,7 @@ const Login = () => {
     email: "",
     password: "",
   });
-  const [, dispatch] = UseFirebaseValue();
+  const [{ incorrectIdPass }, dispatch] = UseFirebaseValue();
 
   function submitHandler(e) {
     e.preventDefault();
@@ -25,9 +24,23 @@ const Login = () => {
       })
       .catch((error) => {
         const errorMessage = error.message;
-        console.log(errorMessage);
+        dispatch({
+          type: "WrongIdPass",
+          incorrectIdPass: errorMessage,
+        });
       });
   }
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      dispatch({
+        type: "WrongIdPass",
+        error: null,
+      });
+    }, 1500);
+    return () => clearTimeout(timer);
+    // eslint-disable-next-line
+  }, [incorrectIdPass]);
 
   return (
     <div className="login-div">
@@ -36,34 +49,23 @@ const Login = () => {
         alt="login"
       ></img>
       <form onSubmit={submitHandler}>
-        <Textarea
-          color="success"
-          disabled={false}
-          minRows={1.5}
+        <input
+          type="text"
           placeholder="Email"
-          size="md"
-          variant="outlined"
-          className="login-text-email"
-          value={inputValues.email}
+          required
           onChange={(e) =>
             setInputValues({ ...inputValues, email: e.target.value })
           }
-          required
         />
-        <Textarea
-          color="success"
-          disabled={false}
-          minRows={1.5}
+        <input
+          type="password"
           placeholder="Password"
-          size="md"
-          variant="outlined"
-          className="login-text-email"
-          value={inputValues.password}
+          required
           onChange={(e) =>
             setInputValues({ ...inputValues, password: e.target.value })
           }
-          required
         />
+        <h4 style={{ color: "red" }}>{incorrectIdPass}</h4>
         <button className="login-button" type="submit">
           Login
         </button>

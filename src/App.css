@@ -94,13 +94,13 @@
   transition: all 0.5s;
 }
 
-img {
+.login-div > img {
+  position: relative;
   height: 300px;
   width: 300px;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
   margin-bottom: 4%;
 }
 
@@ -126,6 +126,15 @@ img {
   }
 }
 
+form > input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
 @media all and (max-width: 1400px) and (min-width: 1000px) {
   img {
     margin-top: 0%;
@@ -142,17 +151,18 @@ img {
     margin-left: 30%;
   }
   .login-div {
-    margin-left: 20%;
+    position: relative;
     margin-top: 5%;
-    width: 70%;
-  }
-  img {
-    height: 280px;
-    width: 280px;
-    display: block;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+  }
+  img {
+    position: relative;
+    height: 280px;
+    width: 280px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .main-patient-div {
@@ -202,5 +212,24 @@ img {
     margin-top: auto;
     margin-bottom: auto;
     margin-right: 1%;
+  }
+
+  form > input {
+    width: 100%;
+    padding: 12px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  form > input[type="text"] {
+    margin: 0%;
+    width: 100%;
+    padding: 12px 20px;
+  }
+
+  form > button[type="submit"] {
+    margin-top: 1%;
+    width: 50%;
   }
 }
