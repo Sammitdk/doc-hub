@@ -13,6 +13,8 @@ import { db } from "../Firebase";
 import "../index.css";
 
 const PatientDetails = () => {
+  const detailedName = window.matchMedia("(max-width: 600px)").matches;
+  console.log(detailedName);
   const urlPara = useParams();
   const [newList, setNewList] = useState(null);
   const navigate = useNavigate();
@@ -79,31 +81,32 @@ const PatientDetails = () => {
     <div>
       <div className="detailed-info">
         <h1>Personal Details</h1>
-        <div>
-          <h2>Name : </h2>
+        <div className="detailed-name">
           <h2 style={{ paddingLeft: 7 }}>
+            Name :{" "}
             {newList?.firstname.charAt(0).toUpperCase() +
               newList?.firstname.slice(1)}{" "}
-            {newList?.middlename.charAt(0).toUpperCase() +
-              newList?.middlename.slice(1)}{" "}
+            {!detailedName &&
+              newList?.middlename.charAt(0).toUpperCase() +
+                newList?.middlename.slice(1)}{" "}
             {newList?.lastname.charAt(0).toUpperCase() +
               newList?.lastname.slice(1)}
           </h2>
         </div>
-        <div>
+        <div className="detailed-age">
           <h2>Age</h2>
           <h2 style={{ paddingLeft: 7 }}>{newList?.age}</h2>
         </div>
-        <div>
+        <div className="detailed-number">
           <h2>Mobile Number :</h2>
           <h2 style={{ paddingLeft: 7 }}>{newList?.mobilenumber}</h2>
         </div>
       </div>
 
       {checkRoute !== `/${urlPara.id}` && (
-        <div>
+        <div className="doctor-details">
           <form>
-            <label>Medicine</label>
+            <label className="medicine-label">Medicine</label>
             <input
               type="text"
               placeholder="prescription"
@@ -112,7 +115,7 @@ const PatientDetails = () => {
                 set({ ...prescription, medicine: e.target.value })
               }
             />
-            <label>Care</label>
+            <label className="medicine-care">Care</label>
             <input
               type="text"
               placeholder="prescription"

@@ -29,6 +29,7 @@ const Footer = () => {
     // eslint-disable-next-line
   }, []);
 
+ 
   return patients?.map((patient) => {
     return <Patient patient={patient} key={patient.id} />;
   });

@@ -7,6 +7,7 @@ import MedicalInformationOutlinedIcon from "@mui/icons-material/MedicalInformati
 import { Link } from "react-router-dom";
 
 const SideBar = () => {
+  const appointment = window.matchMedia("(max-width: 600px)") && "Appoint";
   return (
     <div className="side-bar">
       <h1>Welcome</h1>
@@ -29,7 +30,7 @@ const SideBar = () => {
         <Link to="/appointment">
           <HowToRegOutlinedIcon sx={{ fontSize: 50 }} />
         </Link>
-        <h2>Appointment</h2>
+        <h2>{appointment ? appointment : "Appointment"}</h2>
       </div>
       <hr style={{ marginTop: 10 }} />
       <div className="home-icon">

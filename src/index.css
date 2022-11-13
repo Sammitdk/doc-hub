@@ -61,6 +61,17 @@ body {
   transition: 0s;
 }
 
+.doctor-details {
+  position: relative;
+  width: 90%;
+  margin-left: 20%;
+}
+
+.doctor-details > button {
+  position: relative;
+  margin-right: inherit;
+}
+
 @media all and (max-width: 1200px) {
   .detailed-info {
     border: 2px solid green;
@@ -69,5 +80,64 @@ body {
     margin-left: 30%;
     width: 68%;
     margin-bottom: 0%;
+  }
+}
+
+@media all and (max-width: 600px) {
+  .detailed-info {
+    border: 2px solid green;
+    padding-top: 0%;
+    padding-left: 2%;
+    margin-left: 37%;
+    width: 68%;
+    margin-bottom: 0%;
+  }
+
+  .detailed-info > h1 {
+    font-size: large;
+  }
+  .detailed-info > h2 {
+    font-size: medium;
+  }
+  .detailed-name > h2 {
+    font-size: medium;
+  }
+  .detailed-age > h2 {
+    font-size: medium;
+  }
+  .detailed-number > h2 {
+    font-size: medium;
+  }
+
+  .doctor-appointment > button {
+    margin-left: auto;
+    margin-right: auto;
+    height: fit-content;
+    width: fit-content;
+  }
+
+  .doctor-details {
+    position: relative;
+    width: 100%;
+    margin-left: 22%;
+  }
+
+  .doctor-details > label {
+    margin-left: 2%;
+  }
+
+  .doctor-details > button {
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    margin-right: auto;
+  }
+
+  .medicine-label {
+    margin-left: 10%;
+  }
+
+  .medicine-care {
+    margin-left: 10%;
   }
 }

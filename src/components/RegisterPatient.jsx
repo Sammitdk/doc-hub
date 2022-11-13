@@ -63,7 +63,7 @@ const RegisterPatient = () => {
       <form onSubmit={submitHandler}>
         <div className="full-name">
           <div className="first-name">
-            <label>First Name</label>
+            <label className="div-label">First Name</label>
             <input
               type="text"
               placeholder="Your name.."
@@ -74,7 +74,7 @@ const RegisterPatient = () => {
             />
           </div>
           <div className="middle-name">
-            <label>Middle Name</label>
+            <label className="div-label">Middle Name</label>
             <input
               type="text"
               placeholder="Your middle name.."
@@ -85,7 +85,7 @@ const RegisterPatient = () => {
             />
           </div>
           <div className="last-name">
-            <label>Last Name</label>
+            <label className="div-label">Last Name</label>
             <input
               type="text"
               placeholder="Your last name.."
@@ -96,7 +96,7 @@ const RegisterPatient = () => {
             />
           </div>
         </div>
-        <label>Gender</label>
+        <label className="div-label">Gender</label>
         <select
           required
           value={inputValues.gender}
@@ -108,7 +108,7 @@ const RegisterPatient = () => {
           <option value="Female">Female</option>
           <option value="Prefer Not To Say">Prefer Not to say</option>
         </select>
-        <label>Age</label>
+        <label className="div-label">Age</label>
         <input
           type="text"
           placeholder="Your age.."
@@ -120,7 +120,7 @@ const RegisterPatient = () => {
             setInputValues({ ...inputValues, age: e.target.value })
           }
         />
-        <label>Mobile Number</label>
+        <label className="div-label">Mobile Number</label>
         <input
           type="text"
           placeholder="Your Mobile Number.."
@@ -132,7 +132,7 @@ const RegisterPatient = () => {
             setInputValues({ ...inputValues, mobilenumber: e.target.value })
           }
         />
-        <label>Address</label>
+        <label className="div-label">Address</label>
         <input
           type="text"
           placeholder="Your Address.."

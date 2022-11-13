@@ -1,16 +1,10 @@
 import femaleDoc from ".././assets/images/femaledoctor.gif";
+import "../registerpatient.css";
 
 const Main = () => {
-  const style = {
-    position: "fixed",
-    height: "300px",
-    width: "300px",
-    right: 0,
-    top: 0,
-  };
   return (
     <div>
-      <img src={femaleDoc} alt="femaleDoc" style={style} />
+      <img src={femaleDoc} alt="femaleDoc" />
     </div>
   );
 };

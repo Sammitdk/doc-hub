@@ -11,6 +11,7 @@ const Patient = ({ patient }) => {
   const checkRoute = window.location.pathname === "/check";
 
   const patientClick = (patient) => {
+    console.log(patient);
     navigate(`/${patient}`);
   };
 

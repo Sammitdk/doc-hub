@@ -47,16 +47,21 @@ hr {
     top: 0;
     left: 0;
     height: 100%;
-    width: 20%;
+    width: 25%;
     border: 1px solid green;
     margin-left: 0%;
     padding-left: 0%;
+    margin-right: 0%;
+  }
+
+  hr {
+    margin-top: 100%;
   }
 
   .side-bar > h1 {
     position: fixed;
     color: rgb(18, 107, 18);
-    font-size: 35px;
+    font-size: 25px;
     top: 2;
     margin-left: 0.7%;
     margin-bottom: 0.4%;
@@ -64,6 +69,7 @@ hr {
   .MuiSvgIcon-root {
     margin: 0%;
     color: black;
+    transform: scale(0.7);
   }
   .MuiSvgIcon-root:hover {
     color: green;
@@ -71,9 +77,9 @@ hr {
     transition: all 0.5s;
   }
   .home-icon > h2 {
-    margin-left: 1%;
+    margin-left: 0%;
     color: black;
-    font-size: large;
+    font-size: medium;
   }
   .home-icon {
     display: flex;
