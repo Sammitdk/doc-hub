@@ -26,15 +26,13 @@ const RegisterPatient = () => {
     mobilenumber: "",
     address: "",
   });
+  const generateId = `${inputValues.firstname.toLowerCase()}${String(
+    inputValues.mobilenumber
+  ).slice(-4)}`;
+  const id = generateId.replace(/ /g, "");
   const submitHandler = async (e) => {
     e.preventDefault();
-    const docRef = doc(
-      db,
-      "Patients",
-      `${inputValues.firstname.toLowerCase()}${String(
-        inputValues.mobilenumber
-      ).slice(-4)}`
-    );
+    const docRef = doc(db, "Patients", id);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
       setError({
@@ -43,9 +41,7 @@ const RegisterPatient = () => {
       });
     } else {
       const data = {
-        id: `${inputValues.firstname.toLowerCase()}${String(
-          inputValues.mobilenumber
-        ).slice(-4)}`,
+        id: id,
         firstname: inputValues.firstname.toLowerCase(),
         middlename: inputValues.middlename.toLowerCase(),
         lastname: inputValues.lastname.toLowerCase(),
