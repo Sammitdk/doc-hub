@@ -32,8 +32,8 @@ const Patient = ({ patient }) => {
         <h2>
           {patient.firstname.charAt(0).toUpperCase() +
             patient.firstname.slice(1)}{" "}
-          {patient.firstname.charAt(0).toUpperCase() +
-            patient.firstname.slice(1)}{" "}
+          {patient.middlename.charAt(0).toUpperCase() +
+            patient.middlename.slice(1)}{" "}
           {patient.lastname.charAt(0).toUpperCase() + patient.lastname.slice(1)}
         </h2>
         <h2>{patient.dateTime}</h2>
@@ -47,8 +47,8 @@ const Patient = ({ patient }) => {
       <h2 className="patient-name">
         {patient.firstname.charAt(0).toUpperCase() + patient.firstname.slice(1)}{" "}
         {appointmentRoute &&
-          patient.firstname.charAt(0).toUpperCase() +
-            patient.firstname.slice(1)}{" "}
+          patient.middlename.charAt(0).toUpperCase() +
+            patient.middlename.slice(1)}{" "}
         {patient.lastname.charAt(0).toUpperCase() + patient.lastname.slice(1)}
       </h2>
       <h2 className="patient-id">{patient.id}</h2>

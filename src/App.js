@@ -14,7 +14,7 @@ import CheckPatient from "./components/CheckPatient";
 const App = () => {
   const [{ user }] = UseFirebaseValue();
   return (
-    <div>
+    <div style={{ margin: 0, padding: 0 }}>
       {!user ? (
         <Login />
       ) : (

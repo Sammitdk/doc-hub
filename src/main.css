@@ -1,6 +1,6 @@
 .side-bar {
   position: fixed;
-  background-color: azure;
+  background-color: whitesmoke;
   top: 0;
   left: 0;
   height: 100%;
@@ -31,7 +31,7 @@ hr {
   color: black;
 }
 .MuiSvgIcon-root {
-  margin: 2%;
+  margin-right: 2%;
   color: black;
 }
 .MuiSvgIcon-root:hover {
@@ -43,12 +43,9 @@ hr {
 @media all and (max-width: 900px) {
   .side-bar {
     position: fixed;
-    background-color: azure;
-    top: 0;
-    left: 0;
     height: 100%;
     width: 25%;
-    border: 1px solid green;
+    border: 1px solid green;  
     margin-left: 0%;
     padding-left: 0%;
     padding-right: 6%;
@@ -58,8 +55,6 @@ hr {
     margin-top: 100%;
     border: 2px solid green;
     width: 120%;
-    /* border: 5px solid green;
-    border-radius: 5px; */
   }
 
   .side-bar > h1 {
