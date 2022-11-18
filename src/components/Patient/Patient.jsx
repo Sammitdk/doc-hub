@@ -1,8 +1,8 @@
 import React from "react";
-import "../App.css";
 import { useNavigate } from "react-router-dom";
-import { db } from "../Firebase";
+import { db } from "../../Firebase";
 import { deleteDoc, doc } from "firebase/firestore";
+import "./patient.css";
 
 const Patient = ({ patient }) => {
   const navigate = useNavigate();
@@ -11,7 +11,6 @@ const Patient = ({ patient }) => {
   const checkRoute = window.location.pathname === "/check";
 
   const patientClick = (patient) => {
-    console.log(patient);
     navigate(`/${patient}`);
   };
 

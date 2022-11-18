@@ -1,12 +1,18 @@
 import { collection, query, onSnapshot } from "firebase/firestore";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { db, UseFirebaseValue } from "../Firebase";
-import Patient from "./Patient";
+import Patient from "../components/Patient/Patient";
+import "../components/Patient/patient.css";
 
 const Patients = () => {
   const [{ patients }, dispatch] = UseFirebaseValue([]);
+  const [style, setStyle] = useState({});
 
   useEffect(() => {
+    setStyle({
+      transition: "transform 1.5s ease-in-out",
+      transform: "translateY(8%)",
+    });
     const q = query(collection(db, "Patients"));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       dispatch({
@@ -29,9 +35,13 @@ const Patients = () => {
     // eslint-disable-next-line
   }, []);
 
-  return patients?.map((patient) => {
-    return <Patient patient={patient} key={patient.id} />;
-  });
+  return (
+    <div className="patient-div" style={style}>
+      {patients?.map((patient) => {
+        return <Patient patient={patient} key={patient.id} />;
+      })}
+    </div>
+  );
 };
 
 export default Patients;

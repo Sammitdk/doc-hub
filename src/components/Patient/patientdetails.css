@@ -1,0 +1,67 @@
+.detailed-info {
+  margin-top: 8%;
+  width: 85%;
+  border: none;
+  margin-left: 0%;
+}
+
+.detailed-info > div {
+  display: flex;
+  margin-left: initial;
+  padding-left: 0%;
+  padding-top: 0%;
+  padding-bottom: 0%;
+}
+
+.button {
+  position: absolute;
+  background-color: #4caf50;
+  border: none;
+  font-size: 18px;
+  color: #ffffff;
+  padding: 15px;
+  width: 100px;
+  height: 50px;
+  text-align: center;
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.button:hover {
+  color: black;
+  transform: scale(1.1);
+  transition: all 0.5s;
+}
+.button:after {
+  content: "";
+  background: #f1f1f1;
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -20px !important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s;
+}
+
+.button:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s;
+}
+
+.doctor-details {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.doctor-details > button {
+  position: relative;
+  margin-right: auto;
+  margin-left: auto;
+}

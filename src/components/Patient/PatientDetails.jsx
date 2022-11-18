@@ -9,12 +9,12 @@ import {
   setDoc,
   deleteDoc,
 } from "firebase/firestore";
-import { db } from "../Firebase";
-import "../index.css";
+import { db } from "../../Firebase";
+
+import "./patientdetails.css";
 
 const PatientDetails = () => {
   const detailedName = window.matchMedia("(max-width: 600px)").matches;
-  console.log(detailedName);
   const urlPara = useParams();
   const [newList, setNewList] = useState(null);
   const navigate = useNavigate();
@@ -78,7 +78,7 @@ const PatientDetails = () => {
   };
 
   return (
-    <div>
+    <>
       <div className="detailed-info">
         <h1>Personal Details</h1>
         <div className="detailed-name">
@@ -144,7 +144,7 @@ const PatientDetails = () => {
           </button>
         </div>
       )}
-    </div>
+    </>
   );
 };
 

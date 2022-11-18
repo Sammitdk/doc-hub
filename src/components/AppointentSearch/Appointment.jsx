@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { collection, query, onSnapshot, where } from "firebase/firestore";
-import { db, UseFirebaseValue } from "../Firebase";
-import Patient from "./Patient";
-import "../App.css";
+import { db, UseFirebaseValue } from "../../Firebase";
+import Patient from "../Patient/Patient";
+import "./appointment.css";
 
 const Appointment = () => {
   const [search, setSearch] = useState(" ");
   const [{ searchList }, setSearchList] = UseFirebaseValue();
+  const [style, setStyle] = useState({});
 
   useEffect(() => {
+    setStyle({
+      transition: "transform 1s ease-in-out",
+      transform: "translateX(15%)",
+    });
     const q = query(
       collection(db, "Patients"),
       where("firstname", ">=", search),
@@ -35,8 +40,8 @@ const Appointment = () => {
     // eslint-disable-next-line
   }, [search]);
   return (
-    <div>
-      <div className="search-bar">
+    <>
+      <div className="search-bar" style={style}>
         <input
           type="text"
           placeholder="Search Patient"
@@ -44,7 +49,6 @@ const Appointment = () => {
           onChange={(e) => setSearch(e.target.value.toLocaleLowerCase())}
         />
       </div>
-
       {searchList?.map((patient) => {
         return (
           <div key={patient.id} className="main-patient-div">
@@ -52,7 +56,7 @@ const Appointment = () => {
           </div>
         );
       })}
-    </div>
+    </>
   );
 };
 

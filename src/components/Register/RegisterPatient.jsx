@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from "react";
-import "../registerpatient.css";
 import { doc, setDoc, getDoc } from "firebase/firestore";
-import { db, UseFirebaseValue } from "../Firebase";
+import { db, UseFirebaseValue } from "../../Firebase";
 import { useNavigate } from "react-router-dom";
+import "./register.css";
 
 const RegisterPatient = () => {
+  const [style, setStyle] = useState({});
   const [{ error }, setError] = UseFirebaseValue();
   useEffect(() => {
+    setStyle({
+      transition: "transform 1.5s ease-in-out",
+      transform: "translateY(15%)",
+    });
     const timer = setTimeout(() => {
       setError({
         type: "UserAlreadyExist",
@@ -55,7 +60,7 @@ const RegisterPatient = () => {
     }
   };
   return (
-    <div className="register-div">
+    <div className="register-div" style={style}>
       <form onSubmit={submitHandler}>
         <div className="full-name">
           <div className="first-name">

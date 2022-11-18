@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { collection, query, onSnapshot } from "firebase/firestore";
 import { db } from "../Firebase";
-import Patient from "./Patient";
-import { isEmpty } from "@firebase/util";
+import Patient from "../components/Patient/Patient";
 import MaskImg from "../assets/images/maskman.gif";
+import "../components/Patient/patient.css";
 
 const Check = () => {
   const [searchList, setSearchList] = useState([]);
+  const [style, setStyle] = useState({});
 
   const formatDate = (dateString) => {
     return new Intl.DateTimeFormat("en-US", {
@@ -19,6 +20,10 @@ const Check = () => {
   };
 
   useEffect(() => {
+    setStyle({
+      transition: "transform 1s linear",
+      transform: "translateX(15%)",
+    });
     const q = query(collection(db, "Appointments"));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       setSearchList(
@@ -39,49 +44,21 @@ const Check = () => {
     // eslint-disable-next-line
   }, []);
 
-  const appointment = window.matchMedia("(max-width: 600px)").matches;
-  const noAppointments = {
-    a: {
-      textAlign: "end",
-    },
-    b: {
-      textAlign: "center",
-    },
-    c: {
-      position: "absolute",
-      right: 0,
-      top: 100,
-    },
-    d: {
-      height: "350px",
-      widht: "400px",
-      top: 90,
-      right: 50,
-    },
-  };
-
   return (
-    <div>
-      {isEmpty(searchList) && (
+    <>
+      {searchList ? (
+        <div className="appointment-check-list" style={style}>
+          {searchList?.map((item) => {
+            return <Patient key={item.id} patient={item} />;
+          })}
+        </div>
+      ) : (
         <div>
-          <h2 style={appointment ? noAppointments.a : noAppointments.b}>
-            No Appointments
-          </h2>
-          <img
-            src={MaskImg}
-            style={appointment ? noAppointments.c : noAppointments.d}
-            alt=""
-          ></img>
+          <h2>No Appointments</h2>
+          <img src={MaskImg} alt=""></img>
         </div>
       )}
-      {searchList?.map((item) => {
-        return (
-          <div key={item.id} className="appointment-check-list">
-            <Patient patient={item} />
-          </div>
-        );
-      })}
-    </div>
+    </>
   );
 };
 

@@ -1,20 +1,19 @@
 import "./App.css";
 import { UseFirebaseValue } from "./Firebase";
 import Login from "./components/Login";
-import Main from "./components/Main";
+import Main from "./components/Home/Main";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import RegisterPatient from "./components/RegisterPatient";
-import SideBar from "./components/SideBar";
+import RegisterPatient from "./components/Register/RegisterPatient";
+import SideBar from "./components/sidebar/SideBar";
 import Patients from "./components/Patients";
-import Appointment from "./components/Appointment";
-import PatientDetails from "./components/PatientDetails";
+import Appointment from "./components/AppointentSearch/Appointment";
+import PatientDetails from "./components/Patient/PatientDetails";
 import CheckList from "./components/CheckList";
-import CheckPatient from "./components/CheckPatient";
 
 const App = () => {
   const [{ user }] = UseFirebaseValue();
   return (
-    <div style={{ margin: 0, padding: 0 }}>
+    <div className="app">
       {!user ? (
         <Login />
       ) : (
@@ -25,9 +24,9 @@ const App = () => {
             <Route exact path="/register" element={<RegisterPatient />} />
             <Route path="/patients" element={<Patients />} />
             <Route path="/appointment" element={<Appointment />} />
-            <Route path="/:id" element={<PatientDetails />} />
             <Route path="/check" element={<CheckList />} />
-            <Route path="/check/:id" element={<CheckPatient />} />
+            <Route path="/check/:id" element={<PatientDetails />} />
+            <Route path="/:id" element={<PatientDetails />} />
           </Routes>
         </BrowserRouter>
       )}

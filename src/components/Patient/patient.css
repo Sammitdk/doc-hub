@@ -1,0 +1,75 @@
+.patient-div {
+  margin-top: 0%;
+}
+
+.appointment-check-list {
+  margin: 0%;
+  padding: 0%;
+}
+
+.patient {
+  margin-top: 2.5%;
+  display: flex;
+  padding: 0.5%;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
+  background-color: white;
+}
+
+.patient-check {
+  background-color: white;
+  display: flex;
+  width: 70%;
+  padding: 0.5%;
+  padding-left: 2%;
+  border: none;
+  margin: 0%;
+  margin-top: 5%;
+}
+
+.patient-check > .patient-check-button {
+  margin-right: 2%;
+  background-color: #04aa6d;
+  color: white;
+  border: none;
+  cursor: pointer;
+  width: 100px;
+  height: 50px;
+  margin-left: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.patient-check > .patient-check-button:hover {
+  color: black;
+  transform: scale(1.1);
+  transition: all 0.5s;
+}
+
+.patient:hover {
+  transform: scale(1.02);
+  transition: all 0.5s;
+}
+
+.patient > .patient-id {
+  margin-left: auto;
+  margin-right: 1%;
+}
+
+.patient-name {
+  margin: 0%;
+  padding: 0%;
+}
+
+.delete {
+  background-color: rgb(241, 65, 65);
+  color: black;
+  border: none;
+}
+
+.delete:hover {
+  transform: scale(1.2);
+  transition: all 0.5s;
+}

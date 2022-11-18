@@ -1,5 +1,4 @@
-import femaleDoc from ".././assets/images/femaledoctor.gif";
-import "../registerpatient.css";
+import "./home.css";
 
 const Main = () => {
   // fetch(
@@ -10,8 +9,8 @@ const Main = () => {
   //   });
   // });
   return (
-    <div>
-      <img src={femaleDoc} alt="femaleDoc" />
+    <div className="home">
+      <h2>Home</h2>
     </div>
   );
 };
