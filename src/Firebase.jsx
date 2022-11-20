@@ -7,7 +7,6 @@ import { getAuth, GoogleAuthProvider } from "firebase/auth";
 export const FirebaseContext = createContext();
 
 function Firebase({ initialState, reducer, children }) {
-  console.log(firebaseConfig)
   return (
     <FirebaseContext.Provider value={useReducer(reducer, initialState)}>
       {children}

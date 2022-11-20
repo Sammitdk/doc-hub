@@ -37,7 +37,7 @@ const Login = () => {
         type: "WrongIdPass",
         error: null,
       });
-    }, 1500);
+    }, 2000);
     return () => clearTimeout(timer);
     // eslint-disable-next-line
   }, [incorrectIdPass]);
