@@ -2,3 +2,13 @@ body {
   margin: 0;
   background-color: aliceblue;
 }
+
+.no-appointment {
+  position: relative;
+  margin-top: 10%;
+  margin-left: 30%;
+  font-size: 5vh;
+  color: aliceblue;
+  -webkit-text-stroke: 0.01vh #329d52;
+  text-transform: uppercase;
+}

@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { collection, query, onSnapshot } from "firebase/firestore";
 import { db } from "../Firebase";
 import Patient from "../components/Patient/Patient";
-import MaskImg from "../assets/images/maskman.gif";
 import "../components/Patient/patient.css";
+import { isEmpty } from "@firebase/util";
+import "../index.css";
 
 const Check = () => {
   const [searchList, setSearchList] = useState([]);
@@ -46,17 +47,14 @@ const Check = () => {
 
   return (
     <>
-      {searchList ? (
+      {searchList === isEmpty ? (
         <div className="appointment-check-list" style={style}>
           {searchList?.map((item) => {
             return <Patient key={item.id} patient={item} />;
           })}
         </div>
       ) : (
-        <div>
-          <h2>No Appointments</h2>
-          <img src={MaskImg} alt=""></img>
-        </div>
+        <h2 className="no-appointment">No Appointments</h2>
       )}
     </>
   );

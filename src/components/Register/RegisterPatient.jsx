@@ -6,14 +6,14 @@ import "./register.css";
 
 const RegisterPatient = () => {
   const [style, setStyle] = useState({});
-  const [{ error }, setError] = UseFirebaseValue();
+  const [{ error }, dispatch] = UseFirebaseValue();
   useEffect(() => {
     setStyle({
       transition: "transform 1.5s ease-in-out",
       transform: "translateY(15%)",
     });
     const timer = setTimeout(() => {
-      setError({
+      dispatch({
         type: "UserAlreadyExist",
         error: null,
       });
@@ -40,7 +40,7 @@ const RegisterPatient = () => {
     const docRef = doc(db, "Patients", id);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
-      setError({
+      dispatch({
         type: "UserAlreadyExist",
         error: "User Already Exist",
       });
@@ -56,6 +56,13 @@ const RegisterPatient = () => {
         address: inputValues.address,
       };
       await setDoc(docRef, data);
+      dispatch({
+        type: "setDialog",
+        dialog: {
+          open: "plain",
+          message: "succesfully registered",
+        },
+      });
       navigate("/");
     }
   };

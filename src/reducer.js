@@ -4,6 +4,7 @@ export const initialState = {
   patients: null,
   searchList: null,
   incorrectIdPass: null,
+  dialog: null,
 };
 
 const reducer = (state, action) => {
@@ -32,6 +33,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         incorrectIdPass: action.incorrectIdPass,
+      };
+    case "setDialog":
+      return {
+        ...state,
+        dialog: action.dialog,
       };
     default:
       return state;

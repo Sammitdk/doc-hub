@@ -9,6 +9,7 @@ import Patients from "./components/Patients";
 import Appointment from "./components/AppointentSearch/Appointment";
 import PatientDetails from "./components/Patient/PatientDetails";
 import CheckList from "./components/CheckList";
+import Dialog from "./components/Dialog";
 
 const App = () => {
   const [{ user }] = UseFirebaseValue();
@@ -19,6 +20,7 @@ const App = () => {
       ) : (
         <BrowserRouter>
           <SideBar />
+          <Dialog />
           <Routes>
             <Route path="/" element={<Main />} />
             <Route exact path="/register" element={<RegisterPatient />} />

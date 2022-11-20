@@ -9,8 +9,7 @@ import {
   setDoc,
   deleteDoc,
 } from "firebase/firestore";
-import { db } from "../../Firebase";
-
+import { db, UseFirebaseValue } from "../../Firebase";
 import "./patientdetails.css";
 
 const PatientDetails = () => {
@@ -20,6 +19,8 @@ const PatientDetails = () => {
   const navigate = useNavigate();
   const checkRoute = window.location.pathname;
   const [prescription, set] = useState({ medicine: "", care: "" });
+  const [dispatch] = UseFirebaseValue();
+
   useEffect(() => {
     getPatient();
     // eslint-disable-next-line
@@ -47,6 +48,13 @@ const PatientDetails = () => {
       { merge: true }
     );
     await deleteDoc(doc(db, "Appointments", urlPara?.id));
+    dispatch({
+      type: "setDialog",
+      dialog: {
+        open: "plain",
+        message: "Checked successfully",
+      },
+    });
     navigate("/check");
   };
 
@@ -75,6 +83,13 @@ const PatientDetails = () => {
       mobilenumber: patientDetails.mobilenumber,
     });
     navigate("/");
+    dispatch({
+      type: "setDialog",
+      dialog: {
+        open: "plain",
+        message: "Appointed successfully",
+      },
+    });
   };
 
   return (
