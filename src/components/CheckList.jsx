@@ -3,7 +3,6 @@ import { collection, query, onSnapshot } from "firebase/firestore";
 import { db } from "../Firebase";
 import Patient from "../components/Patient/Patient";
 import "../components/Patient/patient.css";
-import { isEmpty } from "@firebase/util";
 import "../index.css";
 
 const Check = () => {
@@ -44,10 +43,9 @@ const Check = () => {
     });
     // eslint-disable-next-line
   }, []);
-
   return (
     <>
-      {searchList === isEmpty ? (
+      {searchList.length !== 0 ? (
         <div className="appointment-check-list" style={style}>
           {searchList?.map((item) => {
             return <Patient key={item.id} patient={item} />;

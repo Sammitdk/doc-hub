@@ -19,7 +19,7 @@ const PatientDetails = () => {
   const navigate = useNavigate();
   const checkRoute = window.location.pathname;
   const [prescription, set] = useState({ medicine: "", care: "" });
-  const [dispatch] = UseFirebaseValue();
+  const [, dispatch] = UseFirebaseValue();
 
   useEffect(() => {
     getPatient();
@@ -59,37 +59,49 @@ const PatientDetails = () => {
   };
 
   const appoint = async (patientDetails) => {
-    const MainAppointment = await addDoc(
-      collection(db, "Patients", urlPara.id, "Appointments"),
-      {
+    const docRef = await getDoc(doc(db, "Appointments", urlPara?.id));
+
+    if (docRef.exists()) {
+      dispatch({
+        type: "setDialog",
+        dialog: {
+          open: "plain",
+          message: "Already Appointed",
+        },
+      });
+    } else {
+      const MainAppointment = await addDoc(
+        collection(db, "Patients", urlPara.id, "Appointments"),
+        {
+          dateTime: Timestamp.now(),
+          id: urlPara.id,
+          firstname: patientDetails.firstname,
+          middlename: patientDetails.middlename,
+          lastname: patientDetails.lastname,
+          age: patientDetails.age,
+          mobilenumber: patientDetails.mobilenumber,
+        }
+      );
+
+      await setDoc(doc(db, "Appointments", urlPara.id), {
         dateTime: Timestamp.now(),
+        docId: MainAppointment.id,
         id: urlPara.id,
         firstname: patientDetails.firstname,
         middlename: patientDetails.middlename,
         lastname: patientDetails.lastname,
         age: patientDetails.age,
         mobilenumber: patientDetails.mobilenumber,
-      }
-    );
-
-    await setDoc(doc(db, "Appointments", MainAppointment.id), {
-      dateTime: Timestamp.now(),
-      docId: MainAppointment.id,
-      id: urlPara.id,
-      firstname: patientDetails.firstname,
-      middlename: patientDetails.middlename,
-      lastname: patientDetails.lastname,
-      age: patientDetails.age,
-      mobilenumber: patientDetails.mobilenumber,
-    });
-    navigate("/");
-    dispatch({
-      type: "setDialog",
-      dialog: {
-        open: "plain",
-        message: "Appointed successfully",
-      },
-    });
+      });
+      dispatch({
+        type: "setDialog",
+        dialog: {
+          open: "plain",
+          message: "Appointed successfully",
+        },
+      });
+      navigate("/");
+    }
   };
 
   return (
