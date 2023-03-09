@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams , useLocation} from "react-router-dom";
 import {
   addDoc,
   collection,
@@ -20,6 +20,7 @@ const PatientDetails = () => {
   const checkRoute = window.location.pathname;
   const [prescription, set] = useState({ medicine: "", care: "" });
   const [, dispatch] = UseFirebaseValue();
+  const location = useLocation();
 
   useEffect(() => {
     getPatient();
@@ -28,7 +29,7 @@ const PatientDetails = () => {
 
   async function getPatient() {
     if (urlPara.id === checkRoute.slice(7)) {
-      const docRef = doc(db, "Appointments", urlPara.id);
+      const docRef = doc(db, "Appointments", location.state.patient.id);
       const docSnap = await getDoc(docRef);
       setNewList(docSnap.data());
     } else {
@@ -40,14 +41,14 @@ const PatientDetails = () => {
 
   const submitPrescription = async (newList) => {
     await setDoc(
-      doc(db, "Patients", newList?.id, "Appointments", urlPara?.id),
+      doc(db, "Patients", newList?.id, "Appointments", location.state.patient.docId),
       {
         medicine: prescription.medicine,
         care: prescription.care,
       },
       { merge: true }
     );
-    await deleteDoc(doc(db, "Appointments", urlPara?.id));
+    await deleteDoc(doc(db, "Appointments", location.state.patient.id));
     dispatch({
       type: "setDialog",
       dialog: {
@@ -59,7 +60,7 @@ const PatientDetails = () => {
   };
 
   const appoint = async (patientDetails) => {
-    const docRef = await getDoc(doc(db, "Appointments", urlPara?.id));
+    const docRef = await getDoc(doc(db, "Appointments", location.state.patient.id));
 
     if (docRef.exists()) {
       dispatch({
@@ -71,7 +72,7 @@ const PatientDetails = () => {
       });
     } else {
       const MainAppointment = await addDoc(
-        collection(db, "Patients", urlPara.id, "Appointments"),
+        collection(db, "Patients", location.state.patient.id, "Appointments"),
         {
           dateTime: Timestamp.now(),
           id: urlPara.id,
@@ -83,7 +84,7 @@ const PatientDetails = () => {
         }
       );
 
-      await setDoc(doc(db, "Appointments", urlPara.id), {
+      await setDoc(doc(db, "Appointments", location.state.patient.id), {
         dateTime: Timestamp.now(),
         docId: MainAppointment.id,
         id: urlPara.id,
@@ -115,7 +116,7 @@ const PatientDetails = () => {
               newList?.firstname.slice(1)}{" "}
             {!detailedName &&
               newList?.middlename.charAt(0).toUpperCase() +
-                newList?.middlename.slice(1)}{" "}
+              newList?.middlename.slice(1)}{" "}
             {newList?.lastname.charAt(0).toUpperCase() +
               newList?.lastname.slice(1)}
           </h2>

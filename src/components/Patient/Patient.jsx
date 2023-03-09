@@ -6,7 +6,6 @@ import "./patient.css";
 
 const Patient = ({ patient }) => {
   const navigate = useNavigate();
-
   const appointmentRoute = window.location.pathname !== "/appointment";
   const checkRoute = window.location.pathname === "/check";
 
@@ -15,7 +14,7 @@ const Patient = ({ patient }) => {
   };
 
   const check = (patient) => {
-    navigate(`/check/${patient.docId}`);
+    navigate(`/check/${patient.docId}`, { state: { patient: patient } });
   };
 
   const deleteP = async () => {
@@ -47,7 +46,7 @@ const Patient = ({ patient }) => {
         {patient.firstname.charAt(0).toUpperCase() + patient.firstname.slice(1)}{" "}
         {appointmentRoute &&
           patient.middlename.charAt(0).toUpperCase() +
-            patient.middlename.slice(1)}{" "}
+          patient.middlename.slice(1)}{" "}
         {patient.lastname.charAt(0).toUpperCase() + patient.lastname.slice(1)}
       </h2>
       <h2 className="patient-id">{patient.id}</h2>
